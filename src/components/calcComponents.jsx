@@ -8,16 +8,41 @@ import {
   result,
 } from '../actions/calculatorActions';
 
+import BtnNumber from './btnNumber';
+import BtnOperator from './btnOperator';
+import BtnUtils from './btnUtils';
+
+import { Container, Row } from './style/btnStyle';
+
 const CounterComponent = ({ count, plus, minus, multiply, divide, result }) => {
   return (
-    <div>
-      <h2>num: {count}</h2>
-      <button onClick={plus}>Increment</button>
-      <button onClick={minus}>Increment</button>
-      <button onClick={multiply}>Increment</button>
-      <button onClick={divide}>Decrement</button>
-      <button onClick={result}>Decrement</button>
-    </div>
+    <Container>
+      {/* input창 */}
+      <div>1</div>
+      {/* util (ac, enter) */}
+      <div>
+        <BtnUtils text={'AC'} />
+        <BtnUtils text={'enter'} />
+      </div>
+      <div>
+        <BtnOperator text={'('} />
+        <BtnOperator text={')'} />
+        <BtnOperator text={'%'} />
+        <BtnOperator text={'+ / -'} />
+      </div>
+      <Row>
+        {/* number Btn */}
+        <div>
+          {Array.from({ length: 9 }).map((_, index) => (
+            <BtnNumber text={index + 1} />
+          ))}
+        </div>
+        {/* utils (- + * /) */}
+        <div>
+          <BtnOperator text={'*'} />
+        </div>
+      </Row>
+    </Container>
   );
 };
 
